@@ -8,7 +8,25 @@
   <div class="row">
     {% for picture in pictures %}
       <div class="col-md-4">
-        <img src="{{ url_for('static', filename='Pictures/' + picture) }}" class="img-fluid mb-3" alt="{{ picture }}">
+        <img src="{{ url_for('static', filename='Pictures/' + picture) }}" class="img-fluid mb-3" alt="{{ picture }}"
+             data-toggle="modal" data-target="#pictureModal{{ loop.index }}">
+      </div>
+      <!-- Modal -->
+      <div class="modal fade" id="pictureModal{{ loop.index }}" tabindex="-1" role="dialog"
+           aria-labelledby="pictureModalLabel{{ loop.index }}" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="pictureModalLabel{{ loop.index }}">{{ picture }}</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body text-center">
+              <img src="{{ url_for('static', filename='Pictures/' + picture) }}" class="img-fluid" alt="{{ picture }}">
+            </div>
+          </div>
+        </div>
       </div>
     {% endfor %}
   </div>

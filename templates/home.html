@@ -1,8 +1,62 @@
-{% extends 'base.html' %}
-
-{% block title %}Home{% endblock %}
+{% extends "base.html" %}
 
 {% block content %}
-  <h1>Welcome to My Website</h1>
-  <p>This is the home page.</p>
+<div class="hero">
+  <div class="hero-overlay">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <h1 class="text-center">Welcome to My Portfolio</h1>
+          <p class="text-center">Check out my amazing photos</p>
+          <a href="{{ url_for('portfolio') }}" class="btn btn-primary btn-lg d-block mx-auto mt-4">View Portfolio</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="container my-5">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="card">
+        <img src="{{ url_for('static', filename='Pictures/' + photos[0]) }}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Box 1 Title</h5>
+          <p class="card-text">Box 1 Description</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card">
+        <img src="{{ url_for('static', filename='Pictures/' + photos[1]) }}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Box 2 Title</h5>
+          <p class="card-text">Box 2 Description</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card">
+        <img src="{{ url_for('static', filename='Pictures/' + photos[2]) }}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Box 3 Title</h5>
+          <p class="card-text">Box 3 Description</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card">
+        <img src="{{ url_for('static', filename='Pictures/' + photos[3]) }}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Box 4 Title</h5>
+          <p class="card-text">Box 4 Description</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
 {% endblock %}
