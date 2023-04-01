@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="jumbotron">
+    <h1 class="display-4">Welcome to my Photography Portfolio</h1>
+    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    <hr class="my-4">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <a class="btn btn-primary btn-lg" href="/portfolio" role="button">View Portfolio</a>
+  </div>
+
+  <h2>Latest Work</h2>
+
+  <div class="card-deck">
+    {% for filename in picture_files %}
+      {% if filename.endswith('.jpg') %}
+        <div class="card">
+            <img class="card-img-top"  style="width: 100%; height: 100%;"  src="{{ url_for('static', filename='Pictures/' + filename) }}" alt="{{ filename }}">          <div class="card-body">
+            <h5 class="card-title">{{ filename }}</h5>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+{% endblock %}

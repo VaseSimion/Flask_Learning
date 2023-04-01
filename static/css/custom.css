@@ -1,0 +1,86 @@
+/* Hamburger menu styles */
+.nav-icon {
+    cursor: pointer;
+    display: inline-block;
+    padding: 8px 10px;
+}
+
+.nav-icon span {
+    background-color: black;
+    display: block;
+    height: 2px;
+    margin-bottom: 4px;
+    position: relative;
+    transform-origin: center;
+    transition-duration: 0.3s;
+    transition-property: transform;
+    width: 20px;
+}
+
+.nav-icon span:nth-child(1) {
+    transform: translateY(-6px);
+}
+
+.nav-icon span:nth-child(2) {
+    transform: translateY(2px);
+}
+
+.nav-icon span:nth-child(3) {
+    transform: translateY(6px);
+}
+
+.nav-open {
+    height: 100%;
+}
+
+.nav-open .nav-links {
+    display: block;
+}
+
+.nav-links {
+    display: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 64px;
+    right: 0;
+    z-index: 1;
+}
+
+.nav-links li {
+    margin: 0;
+    padding: 0;
+    text-align: right;
+}
+
+.nav-links li a {
+    color: black;
+    display: block;
+    padding: 16px;
+    text-decoration: none;
+    transition-duration: 0.3s;
+    transition-property: opacity;
+    transition-timing-function: ease-in-out;
+}
+
+.nav-links li a:hover {
+    opacity: 0.7;
+}
+
+/* Media query for tablet */
+@media (min-width: 768px) {
+    .nav-icon {
+        display: none;
+    }
+
+    .nav-links {
+        display: block;
+        position: static;
+    }
+
+    .nav-links li {
+        display: inline-block;
+        margin: 0 8px;
+    }
+}
