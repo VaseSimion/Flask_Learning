@@ -1,24 +1,23 @@
-from flask import Flask, render_template
-from flask_bootstrap import Bootstrap
 import os
+from flask import Flask, render_template
 
 app = Flask(__name__)
-bootstrap = Bootstrap(app)
 
 @app.route('/')
-def index():
-    pictures_dir = os.path.join(app.static_folder, 'Pictures')
-    picture_files = [filename for filename in os.listdir(pictures_dir) if filename.endswith('.jpg')]
-    return render_template('home.html', picture_files=picture_files[:3])
+def home():
+    return render_template('home.html')
+
 @app.route('/about')
 def about():
     return render_template('about.html')
 
 @app.route('/portfolio')
 def portfolio():
-    pictures_dir = os.path.join(app.static_folder, 'Pictures')
-    picture_files = [filename for filename in os.listdir(pictures_dir) if filename.endswith('.jpg')]
-    return render_template('portfolio.html', picture_files=picture_files)
+    images = []
+    for filename in os.listdir('static/Pictures'):
+        if filename.endswith('.jpg') or filename.endswith('.png'):
+            images.append(filename)
+    return render_template('portfolio.html', pictures=images)
 
 if __name__ == '__main__':
     app.run(debug=True)
