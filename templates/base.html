@@ -10,11 +10,14 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
         crossorigin="anonymous">
 
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+
   <title>{% block title %}{% endblock %}</title>
+
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/">My Website</a>
+    <a class="navbar-brand" href="/">Saimon</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -30,13 +33,18 @@
         <li class="nav-item">
           <a class="nav-link" href="/about">About</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/contact">Contact</a>
+        </li>
       </ul>
     </div>
   </nav>
 
   <div class="container mt-4">
-    {% block content %}
-    {% endblock %}
+    <div class="wrapper">
+      {% block content %}
+      {% endblock %}
+    </div>
   </div>
 
   <!-- Bootstrap JS -->
@@ -49,5 +57,14 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
           integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
           crossorigin="anonymous"></script>
+
+  <!-- My custom JS -->
+  <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
+
+  <!--Footer-->
+    <div class="footer">
+        <!-- Your footer content goes here -->
+        &copy; 2023 Simion Sularea
+    </div>
 </body>
 </html>

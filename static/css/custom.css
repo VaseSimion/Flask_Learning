@@ -1,10 +1,9 @@
 .hero {
-  background-image: url("{{ url_for('static', filename='Pictures/pic4.jpg') }}");
+  background-image: url("/static/Pictures/2.jpg");
   background-size: cover;
   background-position: center center;
   height: 80vh;
   position: relative;
-  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
 }
 
 .hero-overlay {
@@ -40,3 +39,28 @@
     font-size: 1rem;
   }
 }
+
+body {
+    background: #f0f0f0; /* fallback for older browsers */
+    background: -webkit-linear-gradient(to bottom, #f0f0f0, #c7c7c7); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #f0f0f0, #c7c7c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    margin: 0;
+    padding: 0;
+    }
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            min-height: calc(100vh - 56px); /* Subtract the height of the navigation bar (50px) from 100vh */
+            justify-content: center; /* Center the footer vertically */
+            overflow: auto; /* Add scrolling to the wrapper div */
+        }
+        .content {
+            flex: 1;
+        }
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            margin-top: auto; /* Push the footer to the bottom of the wrapper */
+            text-align: center;
+        }

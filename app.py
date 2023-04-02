@@ -1,7 +1,38 @@
 import os
-from flask import Flask, render_template
+from flask import Flask, render_template, request
+from flask_mail import Mail, Message
+import re
 
 app = Flask(__name__)
+app.secret_key = 'development key'
+app.config['MAIL_SERVER']='smtp.mail.yahoo.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USERNAME'] = 'slrvasile@yahoo.com'
+app.config['MAIL_PASSWORD'] = 'zldohokqkftnsifq'
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
+mail = Mail(app)
+
+
+def validate_form_data(data):
+    error_messages = []
+
+    # Check if name is empty
+    if not data['name']:
+        error_messages.append('Name is required')
+
+    # Check if email is empty or invalid
+    if not data['email']:
+        error_messages.append('Email is required')
+    elif not re.match(r"[^@]+@[^@]+\.[^@]+", data['email']):
+        error_messages.append('Email is invalid')
+
+    # Check if message is empty
+    if not data['message']:
+        error_messages.append('Message is required')
+
+    return error_messages
+
 
 @app.route('/')
 def home():
@@ -9,7 +40,8 @@ def home():
     for filename in os.listdir('static/Pictures'):
         if filename.endswith('.jpg') or filename.endswith('.png'):
             images.append(filename)
-    return render_template('home.html', photos=images[5:9])
+    return render_template('home.html', photos=images[:4])
+
 
 @app.route('/portfolio')
 def portfolio():
@@ -23,6 +55,31 @@ def portfolio():
 @app.route('/about')
 def about():
     return render_template('about.html')
+
+
+@app.route('/contact', methods=['GET', 'POST'])
+def contact():
+    if request.method == 'POST':
+        name = request.form['name']
+        email = request.form['email']
+        subject = request.form['subject']
+        message = request.form['message']
+
+        form_data = request.form.to_dict()
+        errors = validate_form_data(form_data)
+
+        if errors:
+            return render_template('contact.html', errors=errors, form_data=form_data)
+
+        msg = Message(subject=subject,
+                      sender='slrvasile@yahoo.com',
+                      recipients=['sularea.vasile@yahoo.com'])
+        msg.body = f"Name: {name}\nEmail: {email}\n\n{message}"
+        mail.send(msg)
+
+        return render_template('contact.html', success=True)
+
+    return render_template('contact.html', success=False)
 
 
 if __name__ == '__main__':
