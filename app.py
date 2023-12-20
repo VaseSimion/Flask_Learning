@@ -38,7 +38,7 @@ def validate_form_data(data):
 @app.route('/')
 def home():
     images = []
-    for filename in os.listdir("/home/VaseBotty/mysite/static/Pictures"):
+    for filename in os.listdir('static/Pictures'):
         if filename.endswith('.jpg') or filename.endswith('.png'):
             images.append(filename)
     return render_template('home.html', photos=images[-4:])
