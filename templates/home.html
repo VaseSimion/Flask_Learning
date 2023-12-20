@@ -19,44 +19,48 @@
   <div class="row">
     <div class="col-md-3">
       <div class="card">
-        <img src="{{ url_for('static', filename='Pictures/' + photos[0]) }}" class="card-img-top" alt="...">
+        <a href="{{ url_for('photography') }}">
+          <img src="{{ url_for('static', filename='Pictures/4.jpg') }}" class="card-img-top" alt="...">
+        </a>
         <div class="card-body">
           <h5 class="card-title">Photography</h5>
-          <p class="card-text">We can help with various photography tasks, form photo-shoots to editing</p>
+          <p class="card-text">We can help with various photography tasks, from photo-shoots to editing</p>
         </div>
       </div>
     </div>
     <div class="col-md-3">
       <div class="card">
-        <img src="{{ url_for('static', filename='Pictures/' + photos[1]) }}" class="card-img-top" alt="...">
+        <a href="{{ url_for('generated_images') }}">
+          <img src="{{ url_for('static', filename='Pictures/5.png') }}" class="card-img-top" alt="...">
+        </a>
         <div class="card-body">
           <h5 class="card-title">AI generated content</h5>
-          <p class="card-text">We can help you choose the right tools for the rigth job. Do you want to run locally or in the cloud? Wanna pay subscriptions or set it up yourself?</p>
+          <p class="card-text">We can help you navigate the forest of tools and find the right one for the job. Do you want to run locally or in the cloud? Wanna pay subscriptions or set it up yourself?</p>
         </div>
       </div>
     </div>
     <div class="col-md-3">
       <div class="card">
-        <img src="{{ url_for('static', filename='Pictures/' + photos[2]) }}" class="card-img-top" alt="...">
+        <a href="{{ url_for('local_bots') }}">
+          <img src="{{ url_for('static', filename='Pictures/6.png') }}" class="card-img-top" alt="...">
+        </a>
         <div class="card-body">
           <h5 class="card-title">Chatbot implementations</h5>
-          <p class="card-text">Do you want your own chatbot implemented? Do you want to have full control on the data flow</p>
+          <p class="card-text">Do you want your own chatbot implemented and not feel like talking to a person in the forest? Do you want to have full control of the data flow?</p>
         </div>
       </div>
     </div>
     <div class="col-md-3">
       <div class="card">
-        <img src="{{ url_for('static', filename='Pictures/' + photos[3]) }}" class="card-img-top" alt="...">
+        <a href="{{ url_for('ai_tools') }}">
+          <img src="{{ url_for('static', filename='Pictures/7.png') }}" class="card-img-top" alt="...">
+        </a>
         <div class="card-body">
           <h5 class="card-title">Other AI related tools</h5>
-          <p class="card-text">You want to incorporate more AI in your company or in your life? we are the people to help you with that</p>
+          <p class="card-text">You want to incorporate more AI into your company or your life? We bring the dawn of your digital transformation to help you with that</p>
         </div>
       </div>
     </div>
   </div>
 </section>
-{% endblock %}
-
-{% block styles %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
 {% endblock %}

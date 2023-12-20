@@ -2,13 +2,14 @@ import os
 from flask import Flask, render_template, request
 from flask_mail import Mail, Message
 import re
+import random
 
 app = Flask(__name__)
 app.secret_key = 'development key'
 app.config['MAIL_SERVER']='smtp.mail.yahoo.com'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USERNAME'] = 'slrvasile@yahoo.com'
-app.config['MAIL_PASSWORD'] = 'zldohokqkftnsifq'
+app.config['MAIL_PASSWORD'] = 'TBD'
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 mail = Mail(app)
@@ -37,18 +38,19 @@ def validate_form_data(data):
 @app.route('/')
 def home():
     images = []
-    for filename in os.listdir('static/Pictures'):
+    for filename in os.listdir("/home/VaseBotty/mysite/static/Pictures"):
         if filename.endswith('.jpg') or filename.endswith('.png'):
             images.append(filename)
-    return render_template('home.html', photos=images[:4])
+    return render_template('home.html', photos=images[-4:])
 
 
 @app.route('/portfolio')
 def portfolio():
     images = []
-    for filename in os.listdir('static/Pictures'):
+    for filename in os.listdir("/home/VaseBotty/mysite/static/Pictures"):
         if filename.endswith('.jpg') or filename.endswith('.png'):
             images.append(filename)
+        random.shuffle(images)
     return render_template('portfolio.html', pictures=images)
 
 
@@ -73,7 +75,7 @@ def contact():
 
         msg = Message(subject=subject,
                       sender='slrvasile@yahoo.com',
-                      recipients=['sularea.vasile@yahoo.com'])
+                      recipients=['sularea.vasile@google.com'])
         msg.body = f"Name: {name}\nEmail: {email}\n\n{message}"
         mail.send(msg)
 
@@ -81,6 +83,21 @@ def contact():
 
     return render_template('contact.html', success=False)
 
+@app.route('/local_bots.html')
+def local_bots():
+    return render_template('local_bots.html')
+
+@app.route('/generated_images.html')
+def generated_images():
+    return render_template('generated_images.html')
+
+@app.route('/photography.html')
+def photography():
+    return render_template('photography.html')
+
+@app.route('/ai_tools.html')
+def ai_tools():
+    return render_template('ai_tools.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
