@@ -1,8 +1,33 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
-{% block title %}AI Tools{% endblock %}
+{% block title %}Portfolio{% endblock %}
 
 {% block content %}
-<h1>Gi</h1>
-<!-- Add your content specific to the AI Tools category -->
+  <h1>Generated images</h1>
+
+  <div class="row">
+    {% for picture in pictures %}
+      <div class="col-md-4">
+        <img src="{{ url_for('static', filename='Pictures/' + picture) }}" class="polaroid" alt="{{ picture }}"
+             data-toggle="modal" data-target="#pictureModal{{ loop.index }}">
+      </div>
+      <!-- Modal -->
+      <div class="modal fade" id="pictureModal{{ loop.index }}" tabindex="-1" role="dialog"
+           aria-labelledby="pictureModalLabel{{ loop.index }}" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body text-center">
+              <img src="{{ url_for('static', filename='Pictures/' + picture) }}" class="polaroid" alt="{{ picture }}">
+            </div>
+          </div>
+        </div>
+        <div class="polaroid-caption">{{ url_for('static', filename='Pictures/' + picture) }}</div>
+      </div>
+    {% endfor %}
+  </div>
 {% endblock %}

@@ -89,11 +89,19 @@ def local_bots():
 
 @app.route('/generated_images.html')
 def generated_images():
-    return render_template('generated_images.html')
+    images = []
+    for filename in os.listdir('static/Pictures'):
+        if filename.endswith('.png'):
+            images.append(filename)
+    return render_template('generated_images.html', pictures=images)
 
 @app.route('/photography.html')
 def photography():
-    return render_template('photography.html')
+    images = []
+    for filename in os.listdir('static/Pictures'):
+        if filename.endswith('.jpg'):
+            images.append(filename)
+    return render_template('photography.html', pictures=images)
 
 @app.route('/ai_tools.html')
 def ai_tools():
