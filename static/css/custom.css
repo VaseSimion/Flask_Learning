@@ -1,5 +1,5 @@
 .hero {
-  background-image: url("/static/Pictures/2.jpg");
+  background-image: url("/static/Pictures/Main_title.jpg");
   background-size: cover;
   background-position: center center;
   height: 80vh;
@@ -46,13 +46,13 @@ body {
     background: linear-gradient(to bottom, #f0f0f0, #c7c7c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
     }
         .wrapper {
             display: flex;
             flex-direction: column;
             min-height: calc(100vh - 56px); /* Subtract the height of the navigation bar (50px) from 100vh */
             justify-content: center; /* Center the footer vertically */
-            overflow: auto; /* Add scrolling to the wrapper div */
         }
         .content {
             flex: 1;
@@ -64,3 +64,27 @@ body {
             margin-top: auto; /* Push the footer to the bottom of the wrapper */
             text-align: center;
         }
+
+.corkboard {
+  background-color: #bf905f;
+  padding: 20px;
+}
+
+.polaroid {
+  width: 100%;
+  height: auto;
+  margin: 10px;
+  border: 1px solid #000;
+  box-shadow: 0px 0px 5px #000;
+  padding: 10px;
+}
+
+.polaroid-caption {
+  background-color: #fff;
+  padding: 5px;
+  text-align: center;
+}
+
+.modal-dialog {
+  max-width: 100%;
+}
