@@ -50,7 +50,6 @@ def portfolio():
     for filename in os.listdir("/home/VaseBotty/mysite/static/Pictures"):
         if filename.endswith('.jpg') or filename.endswith('.png'):
             images.append(filename)
-        random.shuffle(images)
     return render_template('portfolio.html', pictures=images)
 
 
@@ -75,7 +74,7 @@ def contact():
 
         msg = Message(subject=subject,
                       sender='slrvasile@yahoo.com',
-                      recipients=['sularea.vasile@google.com'])
+                      recipients=['sularea.vasile@yahoo.com'])
         msg.body = f"Name: {name}\nEmail: {email}\n\n{message}"
         mail.send(msg)
 
@@ -90,7 +89,7 @@ def local_bots():
 @app.route('/generated_images.html')
 def generated_images():
     images = []
-    for filename in os.listdir('static/Pictures'):
+    for filename in os.listdir("/home/VaseBotty/mysite/static/Pictures"):
         if filename.endswith('.png'):
             images.append(filename)
     return render_template('generated_images.html', pictures=images)
@@ -98,7 +97,7 @@ def generated_images():
 @app.route('/photography.html')
 def photography():
     images = []
-    for filename in os.listdir('static/Pictures'):
+    for filename in os.listdir("/home/VaseBotty/mysite/static/Pictures"):
         if filename.endswith('.jpg'):
             images.append(filename)
     return render_template('photography.html', pictures=images)
