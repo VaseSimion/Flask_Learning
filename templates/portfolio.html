@@ -8,7 +8,7 @@
   <div class="row">
     {% for picture in pictures %}
       <div class="col-md-4">
-        <img src="{{ url_for('static', filename='Pictures/' + picture) }}" class="img-fluid mb-3" alt="{{ picture }}"
+        <img src="{{ url_for('static', filename='Pictures/' + picture) }}" class="polaroid mb-3" alt="{{ picture }}"
              data-toggle="modal" data-target="#pictureModal{{ loop.index }}">
       </div>
       <!-- Modal -->
